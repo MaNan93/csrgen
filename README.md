@@ -7,6 +7,21 @@ Python 版本要求 3.10 或更高。
 
 逐版本的改动、历史行为差异和升级说明见 [Release Notes](RELEASE_NOTES.md)，当前版本为 0.1.17。模块职责见 [分层架构](docs/ARCHITECTURE.md)，数据契约、时序和扩展方案见 [设计文档](docs/DESIGN.md)。
 
+## 使用 uv 运行
+
+在仓库根目录执行，`.python-version` 自动选择 Python 3.12，uv 自动安装锁定依赖：
+
+```powershell
+uv run csrgen --help
+uv run csrgen --template generated/registers.xlsx
+uv run csrgen generated/registers.xlsx --module apb_csr -o generated/apb_csr.sv
+```
+
+可先执行 `uv sync --locked` 准备环境。
+
+原有 `examples/registers.xlsx` 不是标准 XLSX 压缩文件；新样例请使用上面的
+`--template` 创建，实际转换时传入可由 openpyxl 读取的正常 XLSX 文件。
+
 ## 直接运行
 
 已有 openpyxl 时，可以直接运行，无需安装工具包：

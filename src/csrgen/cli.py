@@ -54,8 +54,8 @@ def main(argv=None):
         epilog=(
             "Run from the csrgen repository (Python 3.12 recommended):\n"
             "  uv run csrgen --help\n"
-            "  uv run csrgen examples/registers.xlsx --module apb_csr -o generated/apb_csr.sv\n"
-            "  uv run csrgen --template new_registers.xlsx"
+            "  uv run csrgen --template generated/registers.xlsx\n"
+            "  uv run csrgen generated/registers.xlsx --module apb_csr -o generated/apb_csr.sv"
         ),
     )
     parser.add_argument("xlsx", nargs="?", type=Path, help="input register table")

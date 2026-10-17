@@ -48,7 +48,16 @@ def write_template(path):
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(description="Generate APB3 register SystemVerilog from XLSX (32-bit data, no strb).")
+    parser = argparse.ArgumentParser(
+        description="Generate APB3 register SystemVerilog from XLSX (32-bit data, no strb).",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=(
+            "Run from the csrgen repository (Python 3.12 recommended):\n"
+            "  uv run csrgen --help\n"
+            "  uv run csrgen examples/registers.xlsx --module apb_csr -o generated/apb_csr.sv\n"
+            "  uv run csrgen --template new_registers.xlsx"
+        ),
+    )
     parser.add_argument("xlsx", nargs="?", type=Path, help="input register table")
     parser.add_argument("--sheet", "-s", default="sheet1", help="worksheet name (default: sheet1, case insensitive fallback)")
     parser.add_argument("--aw", "-aw", type=int, default=16, help="address width, 2..32 (default: 16)")
